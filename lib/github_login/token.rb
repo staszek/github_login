@@ -40,6 +40,7 @@ class GithubLogin::Token
     $stdin.gets.strip
   ensure
     `stty echo`
+    print "\n"
   end
 
   def file_path
