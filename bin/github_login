@@ -1,0 +1,6 @@
+#!/usr/bin/env ruby
+
+require 'github_login'
+
+token = GithubLogin::Token.new
+token.save

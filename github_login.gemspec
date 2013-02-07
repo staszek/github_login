@@ -14,4 +14,6 @@ Gem::Specification.new do |gem|
   gem.name          = "github_login"
   gem.require_paths = ["lib"]
   gem.version       = GithubLogin::VERSION
+
+  gem.add_dependency 'github_api'
 end
