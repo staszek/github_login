@@ -3,10 +3,19 @@ class GithubLogin::Token
     File.open(file_path, 'w+') { |file| file.write token}
   end
 
+  def load
+    @token = file_content unless file_content.to_s.empty?
+  end
+
+  def fetch
+    load or save
+    token
+  end
+
   private
 
   def token
-    oauth.token
+    @token ||= oauth.token
   end
 
   def oauth
@@ -35,6 +44,10 @@ class GithubLogin::Token
 
   def file_path
     File.expand_path("~/.github_token")
+  end
+
+  def file_content
+    File.read(file_path) if File.exists?(file_path)
   end
 
 end
